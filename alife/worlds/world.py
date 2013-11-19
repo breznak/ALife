@@ -2,6 +2,7 @@
 from collections import namedtuple
 import random
 from collections import defaultdict
+from collections import OrderedDict as dict
 
 # represents position in 2D
 Point = namedtuple('Point', 'x y')
@@ -18,12 +19,12 @@ class World(object):
     self.dimX=dimX
     self.dimY=dimY
     self.allItems = listItems
-    self.tiles = defaultdict(dict) # holds items for each tile
+    self.tiles = defaultdict(lambda: defaultdict(dict)) # tiles[x][y]['gold']=37
 
 
   def getItems(self, pos):
     """get items on this position"""
-    return self.tiles[pos.x][pos.y]
+    return self.tiles[pos.x][pos.y].values()
 
   ############################################
   def _getRandomPos(self):
