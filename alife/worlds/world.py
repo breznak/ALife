@@ -1,4 +1,3 @@
-#!/bin/env python2
 
 from collections import namedtuple
 import random
