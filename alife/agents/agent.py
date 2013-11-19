@@ -6,7 +6,7 @@ from collections import defaultdict
 class Agent(object):
   """abstract class for an Agent, the AI"""
 
-  def __init__(self, dictActions, listTargets, world=None, startPos=None, verbose=0):
+  def __init__(self, dictActions, listTargets, world=None, startPos=None, verbose=0, name='Smith'):
     """
     params:
       world -- the environment/world model
@@ -22,6 +22,7 @@ class Agent(object):
     self.actions = dictActions
     self.targets = listTargets[:]
     self.me = dict() # me['hunger']=16
+    self.name = name
 
   def _randomChoice(listA):
     """choose one thing from list randomly"""

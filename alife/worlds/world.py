@@ -15,12 +15,12 @@ class World(object):
         listItems -- list of all possible proporties that can be found on a tile; eg: food, fire, coin, enemy,...; stored in 2D map tiles
   """
 
-  def __init__(self, dimX, dimY, listItems=None): 
+  def __init__(self, dimX, dimY, listItems=None, name='Oz'): 
     self.dimX=dimX
     self.dimY=dimY
     self.allItems = listItems
     self.tiles = defaultdict(lambda: defaultdict(dict)) # tiles[x][y]['gold']=37
-
+    self.name = name
 
   def getItems(self, pos):
     """get items on this position"""
