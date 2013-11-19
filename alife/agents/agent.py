@@ -6,12 +6,12 @@ from collections import defaultdict
 class Agent(object):
   """abstract class for an Agent, the AI"""
 
-  def __init__(self, world, startPos, listActions, listTargets, verbose=0):
+  def __init__(self, dictActions, listTargets, world=None, startPos=None, verbose=0):
     """
     params:
       world -- the environment/world model
       startPos -- starting position within the world
-      listActions -- list of all actions agent can carry; 
+      dictActions -- a dict of all actions agent can carry; 
           each action is a function of 1 argument: agent; which it can modify
       listTargets -- list of functions of 1 argument: agent; 
           don't modify these arguments, return True/False if target is met 
@@ -19,9 +19,9 @@ class Agent(object):
     self.world = world
     self.start = startPos
     self.targets = []
-    self.actions = listActions[:]
+    self.actions = dictActions
     self.targets = listTargets[:]
-    self.me = defaultdict(dict)
+    self.me = dict() # me['hunger']=16
 
   def _randomChoice(listA):
     """choose one thing from list randomly"""
