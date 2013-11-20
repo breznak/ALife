@@ -31,4 +31,3 @@ class World(object):
     """return random point within the world"""
     return [ random.randint(0,self.dimX-1), random.randint(self.dimY-1) ]
 
-
