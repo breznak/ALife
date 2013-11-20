@@ -25,7 +25,8 @@ class SimpleAgent(Agent):
     self.me['x']=x
     self.me['y']=y
     self.me['steps']+=1
-    self.world.tiles[x][y]['score'] = self.util.getScoreIN([x, y])
+    self.mem[x][y]['score'] = self.util.getScoreIN([x, y])
+    self.mem[x][y]['visited'] = 1
 
   ### target(s):
   # define in example code
