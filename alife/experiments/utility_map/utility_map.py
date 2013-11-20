@@ -7,10 +7,10 @@ import math
 from nupic.encoders.utility import SimpleUtilityEncoder
 
 # common settings:
-dimX=10
-dimY=10
+dimX=25
+dimY=25
 items=None
-target=Point(8,9)
+target=Point(4,9)
 
 
 def main():
