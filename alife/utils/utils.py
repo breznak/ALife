@@ -1,6 +1,6 @@
 import numpy
 
-def dumpValToArray(val, dict3d):
+def dumpToArray(val, dict3d):
   """dumps a value from 3D dict to numpy array"""
   ar = numpy.zeros((len(dict3d), len(dict3d[0])))
   for x in dict3d:

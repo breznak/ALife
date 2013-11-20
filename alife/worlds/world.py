@@ -29,5 +29,5 @@ class World(object):
   ############################################
   def _getRandomPos(self):
     """return random point within the world"""
-    return [ random.randint(0,self.dimX-1), random.randint(self.dimY-1) ]
+    return [ random.randint(0, self.dimX-1), random.randint(0, self.dimY-1) ]
 
