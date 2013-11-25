@@ -2,7 +2,9 @@ from alife.agents.agent import Agent
 
 from nupic.bindings.algorithms import SpatialPooler as SP
 from nupic.encoders.utility import SimpleUtilityEncoder as UtilEncoder
+from nupic.algorithms.CLAClassifier import CLAClassifier as Clas
 
+import numpy
 
 class SpatialPoolerAgent(Agent):
   """ agent that uses CAM (content-addresable memory; 
@@ -18,15 +20,14 @@ class SpatialPoolerAgent(Agent):
     self.me['x']=0
     self.me['y']=0
     self.me['steps']=0
-    self.enc = ag.util = SimpleUtilityEncoder(length=numFields, minval=0, maxval=max(int(dimX),int(dimY)), scoreMin=0, scoreMax=100, scoreResolution=0.1)
+    self.enc = UtilEncoder(length=numFields, minval=0, maxval=100, scoreMin=0, scoreMax=100, scoreResolution=0.1)
     # spatial pooler
-    self.sp = None # spatial pooler
-        SP(
-        inputDimensions = [5],
-        columnDimensions = [5],
+    self.sp = SP(
+        inputDimensions = [self.enc._offset],
+        columnDimensions = [1024],
         potentialRadius = 5,
         potentialPct = 0.5,
-        globalInhibition = False,
+        globalInhibition = True,
         localAreaDensity = -1.0,
         numActiveColumnsPerInhArea = 3,
         stimulusThreshold=0,
@@ -38,5 +39,17 @@ class SpatialPoolerAgent(Agent):
         dutyCyclePeriod = 10,
         maxBoost = 10.0,
         seed = -1,
-        spVerbosity = 0,)
+        spVerbosity = 2,)
+    self.cls = Clas() # classifier 
 
+
+  def testSP(self):
+    ret = numpy.zeros(1024)
+    for i in xrange(0,20):
+      dataSize = self.enc._offset
+      self.sp.compute(numpy.ones(dataSize),True, ret)
+    print ret
+
+if __name__ == "__main__":
+  a = SpatialPoolerAgent(5)
+  a.testSP()
