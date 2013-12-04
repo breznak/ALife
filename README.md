@@ -24,6 +24,7 @@ modelling artificial creature behavior and emotions with CLA
 
  - behavior: goal is to reach target, but with each step, the agent becomes more and more hungry, it also perceives food located on a map
    and plans accordingly. 
+   `python alife/experiments/behavior/utility_map.py`
 
    <div align="center">
      <img title="food attractors" src="imgs/emotions.png" />
@@ -35,4 +36,9 @@ modelling artificial creature behavior and emotions with CLA
      <p>Overall utility of target & food (*.</p>
    </div>
 
+  `python alife/experiments/behavior/random_walk_map.py`
+   <div align="center">
+     <img title="food attractors" src="imgs/randwalk_combined.png" />
+     <p>A single random walk with utility, food, target,...</p>
+   </div>
 
