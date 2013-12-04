@@ -19,6 +19,7 @@ modelling artificial creature behavior and emotions with CLA
    `python alife/experiments/utility_map/utility_map.py`
    <div align="center">
      <img title="Utility map - Eucleidian distance" src="imgs/utility-eucl.png" />
+     <p>Utility as a distance to target.</p>
    </div>
 
  - behavior: goal is to reach target, but with each step, the agent becomes more and more hungry, it also perceives food located on a map
@@ -26,9 +27,12 @@ modelling artificial creature behavior and emotions with CLA
 
    <div align="center">
      <img title="food attractors" src="imgs/emotions.png" />
+     <p>Locations of food - attractors, influence changes with hunger level.</p>
    </div>
+   <p> and target and hunger combined... </p>
    <div align="center">
      <img title="target and food combined" src="imgs/combined.png" />
+     <p>Overall utility of target & food (*.</p>
    </div>
 
 
