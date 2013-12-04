@@ -30,7 +30,8 @@ class Agent(object):
     self.me = innerStates # me['hunger']=16
     # mem: 3D map, mem['x']['y']['visited']=1, saves as memory of things in the world, personal things written here
     self.mem = defaultdict(lambda: defaultdict(dict))
-    self.mem = zeros(listMemFields, self.mem, zero=0)
+    if self.world is not None:
+      self.mem = zeros(listMemFields, self.mem, self.world.dimX, self.world.dimY, zero=0)
     self.name = name
 
   def _randomChoice(listA):

@@ -6,7 +6,7 @@ from alife.utils.utils import dumpToArray
 import math
 import sys
 import numpy
-from nupic.encoders.utility import SimpleUtilityEncoder
+from nupic.encoders.extras.utility import SimpleUtilityEncoder
 
 # common settings:
 items=None
@@ -14,6 +14,7 @@ target=Point(4,9)
 agent=None
 
 foods = []
+_hungerMax = 40
 
 def main(targetX=4, targetY=9, dimX=25, dimY=25):
   global target
@@ -68,7 +69,8 @@ def euclDistance(listCoords):
   dst_target =  math.sqrt((tx-x)**2 + (ty-y)**2)
   (_,dst_food) = _toNearestFood(x,y)
 
-  return dst_target + dst_food # there's + bcs we're finding a min (target dist = 0)
+  return (1- agent.me['hunger']/_hungerMax)*dst_target + (agent.me['hunger']/_hungerMax)*dst_food # there's + bcs we're finding a min (target dist = 0)
+#  return dst_target + dst_food
 
 def _toNearestFood(x,y):
   global foods
@@ -93,7 +95,8 @@ def go(ag, x, y):
   ag.me['x']=x
   ag.me['y']=y
   ag.me['steps']+=1
-  ag.me['hunger']+=1 # walking is tiresome
+  if ag.me['hunger']<=_hungerMax:
+    ag.me['hunger']+=1 # walking is tiresome
   ag.mem[x][y]['score'] = ag.util.getScoreIN([x, y])
   ag.mem[x][y]['visited'] = 1
 

@@ -5,7 +5,7 @@ from alife.agents.UtilityAgent import SimpleAgent
 from alife.utils.utils import dumpToArray
 import math
 import sys
-from nupic.encoders.utility import SimpleUtilityEncoder
+from nupic.encoders.extras.utility import SimpleUtilityEncoder
 
 # common settings:
 items=None
