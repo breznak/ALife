@@ -37,7 +37,7 @@ def main(targetX=4, targetY=9, dimX=25, dimY=25):
     for y in xrange(w.dimY):
       ag.actions['go'](ag, x, y)
 
-  utilityMap = dumpToArray('score', ag.mem)
+  utilityMap = dumpToArray('score', ag.mem, ag.world.dimX, ag.world.dimY)
 #  print utilityMap
 
   _visualize(utilityMap)
